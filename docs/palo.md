@@ -10,7 +10,21 @@ Group mapping related CLI commands
     show user group list
     show user group name "cn=it_operations,cn=users,dc=al,dc=com"
 
-https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/user-id/map-users-to-groups
+GlobalProtect Cookie and Config file locations (dat files - see: https://thewayeye.net/posts/globalprotect-remove-cookies/)
 
-https://knowledgebase.paloaltonetworks.com/kcSArticleDetail?id=kA10g0000008U8e
+* Windows
+    %AppData%\..\Local\Palo Alto Networks\GlobalProtect
+
+* Windows log files
+    C:\Program Files\Palo Alto Networks\GlobalProtect
+
+* MacOS
+    /Users/$USER/Library/Application Support/PaloAltoNetworks/GlobalProtect/
+    /Library/Application Support/PaloAltoNetworks/GlobalProtect/
+
+
+Related links
+
+* https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/user-id/map-users-to-groups
+* https://knowledgebase.paloaltonetworks.com/kcSArticleDetail?id=kA10g0000008U8e
 
