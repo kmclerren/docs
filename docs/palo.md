@@ -9,6 +9,10 @@ Group mapping related CLI commands
 
     show user group list
     show user group name "cn=it_operations,cn=users,dc=al,dc=com"
+    debug user-id refresh group-mapping all (force cache refresh)
+    show user user-attributes user all
+    show user ip-user-mapping all
+    
 
 GlobalProtect Cookie and Config file locations (dat files - see: https://thewayeye.net/posts/globalprotect-remove-cookies/)
 
@@ -24,6 +28,7 @@ MacOS
 
     /Users/$USER/Library/Application Support/PaloAltoNetworks/GlobalProtect/
     /Library/Application Support/PaloAltoNetworks/GlobalProtect/
+
 
 
 Related links
