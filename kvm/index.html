@@ -314,33 +314,26 @@
 
 
 <h1 id="kvm">KVM</h1>
-<ul>
-<li>
-<p>Example bridge config
-    <network>
-     <name>br1</name>
-     <forward mode='bridge'/>
-     <bridge name='br1'/>
-    </network></p>
-</li>
-<li>
-<p>Define a new network
-    virsh net-dumpxml default &gt; br1.xml
-    vi br1.xml (edit to specification)
-    virsh net-define br1.xml
-    virsh net-start br1
-    virsh net-autostart br1</p>
-</li>
-<li>
-<p>Attach additional interfaces example
-    virsh shutdown <domain>
-    virsh attach-interface --domain <domain> --type bridge --source br1 --model virtio --config
-    virsh start <domain></p>
-</li>
-<li>
+<p>Example bridge config</p>
+<pre><code>&lt;network&gt;
+ &lt;name&gt;br1&lt;/name&gt;
+ &lt;forward mode='bridge'/&gt;
+ &lt;bridge name='br1'/&gt;
+&lt;/network&gt;
+</code></pre>
+<p>Define a new network</p>
+<pre><code>virsh net-dumpxml default &gt; br1.xml
+vi br1.xml (edit to specification)
+virsh net-define br1.xml
+virsh net-start br1
+virsh net-autostart br1
+</code></pre>
+<p>Attach additional interfaces example</p>
+<pre><code>virsh shutdown &lt;domain&gt;
+virsh attach-interface --domain &lt;domain&gt; --type bridge --source br1 --model virtio --config
+virsh start &lt;domain&gt;
+</code></pre>
 <p>Disable VNC after install</p>
-</li>
-</ul>
 
 
 
