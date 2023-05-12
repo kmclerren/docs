@@ -326,6 +326,10 @@
 --disk /var/lib/libvirt/images/eco.img \
 --os-variant=generic
 </code></pre>
+<p><strong>Enable serial console on guests</strong>
+    systemctl enable serial-getty@ttyS0.service
+    systemctl start serial-getty@ttyS0.service
+    virsh console coolvm</p>
 <p><strong>Example bridge config</strong></p>
 <pre><code>&lt;network&gt;
  &lt;name&gt;br1&lt;/name&gt;
