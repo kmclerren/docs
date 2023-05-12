@@ -314,7 +314,7 @@
 
 
 <h1 id="kvm">KVM</h1>
-<p><strong><em>Example install using virsh, virtio for nic, and specific vnc port</em></strong></p>
+<p><strong>Example install using virsh, virtio for nic, and specific vnc port</strong></p>
 <pre><code>sudo virt-install \
 --name=coolvm \
 --vcpus=4 \
@@ -326,26 +326,26 @@
 --disk /var/lib/libvirt/images/eco.img \
 --os-variant=generic
 </code></pre>
-<p><strong><em>Example bridge config</em></strong></p>
+<p><strong>Example bridge config</strong></p>
 <pre><code>&lt;network&gt;
  &lt;name&gt;br1&lt;/name&gt;
  &lt;forward mode='bridge'/&gt;
  &lt;bridge name='br1'/&gt;
 &lt;/network&gt;
 </code></pre>
-<p><strong><em>Define a new network</em></strong></p>
+<p><strong>Define a new network</strong></p>
 <pre><code>virsh net-dumpxml default &gt; br1.xml
 vi br1.xml (edit to specification)
 virsh net-define br1.xml
 virsh net-start br1
 virsh net-autostart br1
 </code></pre>
-<p><strong><em>Attach additional interfaces example</em></strong></p>
+<p><strong>Attach additional interfaces example</strong></p>
 <pre><code>virsh shutdown &lt;domain&gt;
 virsh attach-interface --domain &lt;domain&gt; --type bridge --source br1 --model virtio --config
 virsh start &lt;domain&gt;
 </code></pre>
-<p><strong><em>Disable VNC after install</em></strong></p>
+<p><strong>Disable VNC after install</strong></p>
 
 
 
