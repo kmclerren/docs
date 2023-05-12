@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../juniper/">
+        <link rel="prev" href="../kvm/">
       
       
-        <link rel="next" href="../linux/">
+        <link rel="next" href="../palo/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>KVM - My Docs</title>
+        <title>Misc Linux Tricks - My Docs</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kvm" class="md-skip">
+        <a href="#misc-linux-tricks" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              KVM
+              Misc Linux Tricks
             
           </span>
         </div>
@@ -246,6 +246,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../kvm/" class="md-nav__link">
+        KVM
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -258,24 +273,9 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        KVM
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../linux/" class="md-nav__link">
         Misc Linux Tricks
       </a>
+      
     </li>
   
 
@@ -328,44 +328,14 @@
                   
 
 
-<h1 id="kvm">KVM</h1>
-<p><strong>Example install using virsh, virtio for nic, and specific vnc port</strong></p>
-<pre><code>sudo virt-install \
---name=coolvm \
---vcpus=4 \
---memory=4096 \
---network network=br1,model=virtio --graphics vnc,listen=0.0.0.0,port=5901 \
---cdrom=/var/lib/libvirt/images/debian-11.7.0-amd64-netinst.iso \
---noautoconsole \
---os-type=linux \
---disk /var/lib/libvirt/images/eco.img \
---os-variant=generic
+<h1 id="misc-linux-tricks">Misc Linux Tricks</h1>
+<p><strong>Public IP from CLI</strong></p>
+<pre><code>curl ipinfo.io
+dig +short myip.opendns.com @resolver1.opendns.com
+dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+dig +short txt ch whoami.cloudflare @1.0.0.1
+host myip.opendns.com resolver1.opendns.com
 </code></pre>
-<p><strong>Enable serial console on guests</strong></p>
-<pre><code>systemctl enable serial-getty@ttyS0.service
-systemctl start serial-getty@ttyS0.service
-virsh console coolvm
-</code></pre>
-<p><strong>Example bridge config</strong></p>
-<pre><code>&lt;network&gt;
- &lt;name&gt;br1&lt;/name&gt;
- &lt;forward mode='bridge'/&gt;
- &lt;bridge name='br1'/&gt;
-&lt;/network&gt;
-</code></pre>
-<p><strong>Define a new network</strong></p>
-<pre><code>virsh net-dumpxml default &gt; br1.xml
-vi br1.xml (edit to specification)
-virsh net-define br1.xml
-virsh net-start br1
-virsh net-autostart br1
-</code></pre>
-<p><strong>Attach additional interfaces example</strong></p>
-<pre><code>virsh shutdown &lt;domain&gt;
-virsh attach-interface --domain &lt;domain&gt; --type bridge --source br1 --model virtio --config
-virsh start &lt;domain&gt;
-</code></pre>
-<p><strong>Disable VNC after install</strong></p>
 
 
 
